@@ -1,0 +1,71 @@
+```
+library(shiny)
+library(markdown)
+
+# Define UI for application that draws a histogram of features
+shinyUI(fluidPage(
+  
+  # Application title
+  titlePanel("Statistics of features (WND-CHARM)"),
+
+      fileInput("file", "Select file with features:", multiple = FALSE, 
+                accept=c('text/csv', 'text/comma-separated-values,text/plain')),
+      includeHTML("include.html"),
+      tabsetPanel(type = "tabs", 
+                  tabPanel("All Features", plotOutput("distPlot", width="95%"), 
+                          # fluidRow(
+                          #   column(3, sliderInput("range", "Range for all features:", min = 1, max = 1300, value = c(1, 1200))
+                          #   ),
+                          #   column(3, sliderInput("featureMax", label = "Max feature value:", min = 0, max = 30, value = c(0,20))
+                          #   )
+                          # ),
+                           uiOutput("ui_All"),
+                           tableOutput("table_features_all")), 
+                  tabPanel("All Features (Grid)", plotOutput("distPlotMartix", height="850px"), 
+                          # fluidRow(
+                          #   column(3, sliderInput("featureMaxMatrix", label = "Max feature value:", min = 0, max = 30, value = c(0,20))
+                          #   )
+                          # )
+                          uiOutput("ui_Grid")
+                  ), 
+                  tabPanel("Sorted Features", plotOutput("distPlot2", width ="95%"), 
+                        #   fluidRow(
+                        #     column(3, sliderInput("range2", "Range for SORTED features:", min = 1, max = 160, value = c(1, 110))
+                        #     ),
+                        #     column(3, sliderInput("featureMax2", label = "Max feature value:", min = 0, max = 30, value = c(0,20))
+                        #     )
+                        #   ),
+                            uiOutput("ui_Sorted"),
+                           tableOutput("table_features")), 
+                  tabPanel("List of Features", tableOutput("table")),
+                  tabPanel("List of Sorted Features", tableOutput("table2")),
+                  tabPanel("Word Cloud", helpText("Word Cloud, based on cumulative feature weights per category"), 
+                           plotOutput("wordCloudPlot"),
+                          # fluidRow(
+                          #   column(3, sliderInput("wc_freq", "Minimum Frequency:", min = 1,  max = 1000, value = 1)
+                          #   ),
+                          #   column(3, sliderInput("wc_max", "Maximum Number of Words:", min = 1,  max = 40,  value = 38))
+                          #   )
+                          # ),
+                          uiOutput("ui_WordCloud")
+                  ),
+                  tabPanel("Feature Classes", helpText("Cumulative feature weights per category"), 
+                           plotOutput("wordCloudHistogram")
+                           ),
+                  
+                  
+                  tabPanel("Source", helpText("Sourcecode of the required ui.R and server.R files, together with the additional include.html and version.html files."), helpText("ui.R"),
+                           includeMarkdown("ui.Rmd"),  
+                           helpText("server.R"),
+                           includeMarkdown("server.Rmd"),
+                           helpText("include.html"),
+                           includeMarkdown("include.html")
+                  )
+      ),
+      includeHTML("version.html")
+    )
+  )
+
+
+
+```
