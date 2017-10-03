@@ -4,7 +4,8 @@ Shiny (R) app for analysis and plotting of features obtained using WND-CHARM. Th
 
 https://istealth.shinyapps.io/ShinyFeaturesWNDCHARM/
 
-##Screenshots
+## Screenshots
+
 ![ScreenShot](https://raw.github.com/istealth/ShinyFeaturesWNDCHARM/master/screenshots/screenshot3.png)
 ![ScreenShot](https://raw.github.com/istealth/ShinyFeaturesWNDCHARM/master/screenshots/screenshot1.png)
 ![ScreenShot](https://raw.github.com/istealth/ShinyFeaturesWNDCHARM/master/screenshots/screenshot2.png)
